@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+platform :ios, '15.0'
+
+target 'RnPolarBle' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # use_frameworks!
+  config = use_native_modules!
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => true
+  )
+
+  # Pods for RnPolarBle
+  pod 'PolarBleSdk', '5.0.1'
+
+
+end
