@@ -1,7 +1,7 @@
 {
   "name": "rn-polar-ble",
-  "version": "0.1.1",
-  "description": "test",
+  "version": "0.1.2",
+  "description": "React Native bridge for polar-ble-sdk",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
