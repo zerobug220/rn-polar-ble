@@ -344,17 +344,23 @@ class RnPolarBle: RCTEventEmitter,
       }.disposed(by: disposeBag)
   }
   
-  @objc func startH10Recording(_ id: String) -> Void {
-    api.startRecording(id, exerciseId: "TEST_APP_ID", interval: .interval_1s, sampleType: .hr)
-      .observe(on: MainScheduler.instance)
-      .subscribe { e in
-        switch e {
-        case .completed:
-          NSLog("recording started")
-        case .error(let err):
-          NSLog("recording start fail: \(err)")
+    @objc func startH10Recording(_ id: String, exerciseId: String, sampleType: String) -> Void {
+        let sample
+        if (sampleType == "hr") {
+            sample = SampleType.hr
+        } else {
+            sample = SampleType.rr
         }
-      }.disposed(by: disposeBag)
+        api.startRecording(id, exerciseId: exerciseId, interval: .interval_1s, sampleType: sample)
+          .observe(on: MainScheduler.instance)
+          .subscribe { e in
+            switch e {
+            case .completed:
+              NSLog("recording started")
+            case .error(let err):
+              NSLog("recording start fail: \(err)")
+            }
+          }.disposed(by: disposeBag)
   }
   
   @objc func stopH10Recording(_ id: String) -> Void {

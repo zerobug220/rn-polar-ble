@@ -49,7 +49,10 @@ RnPolarBle.stopEcgStreaming("deviceId");
 RnPolarBle.startAccStreaming("deviceId");
 RnPolarBle.stopAccStreaming("deviceId");
 RnPolarBle.getH10RecordingStatus("deviceId");
-RnPolarBle.startH10Recording("deviceId");
+
+sampleType =  "hr" or "rr"
+RnPolarBle.startH10Recording("deviceId", "exersiseId", sampleType);
+
 RnPolarBle.stopH10Recording("deviceId");
 RnPolarBle.listExercises("deviceId");
 RnPolarBle.readExercise("deviceId");

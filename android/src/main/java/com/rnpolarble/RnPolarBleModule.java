@@ -463,8 +463,14 @@ public class RnPolarBleModule extends ReactContextBaseJavaModule implements Life
   }
 
   @ReactMethod
-  public void startH10Recording(String id) {
-      recordingStartStopDisposable = api.startRecording(id, "TEST_APP_ID", PolarH10OfflineExerciseApi.RecordingInterval.INTERVAL_1S, PolarH10OfflineExerciseApi.SampleType.HR)
+  public void startH10Recording(String id, String exerciseId, String sampleType) {
+      PolarH10OfflineExerciseApi.SampleType sample;
+      if (sampleType.equals("hr")) {
+        sample = PolarH10OfflineExerciseApi.SampleType.HR;
+      } else {
+        sample = PolarH10OfflineExerciseApi.SampleType.RR;
+      }
+      recordingStartStopDisposable = api.startRecording(id, exerciseId, PolarH10OfflineExerciseApi.RecordingInterval.INTERVAL_1S, sample)
               .observeOn(AndroidSchedulers.mainThread())
               .subscribe(() -> {}, error -> {
                   Log.e(TAG, "startH10Recording error");

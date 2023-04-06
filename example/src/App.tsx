@@ -154,7 +154,7 @@ export default function App() {
   }
 
   const onPressStartRecording = () => {
-    RnPolarBle.startH10Recording(deviceName)
+    RnPolarBle.startH10Recording(deviceName, "test", "hr")
   }
 
   const onPressStopRecording = () => {
