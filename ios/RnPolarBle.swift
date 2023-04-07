@@ -345,11 +345,9 @@ class RnPolarBle: RCTEventEmitter,
   }
   
     @objc func startH10Recording(_ id: String, exerciseId: String, sampleType: String) -> Void {
-        let sample
+        var sample = SampleType.rr
         if (sampleType == "hr") {
             sample = SampleType.hr
-        } else {
-            sample = SampleType.rr
         }
         api.startRecording(id, exerciseId: exerciseId, interval: .interval_1s, sampleType: sample)
           .observe(on: MainScheduler.instance)
